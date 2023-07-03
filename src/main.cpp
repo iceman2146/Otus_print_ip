@@ -4,6 +4,8 @@
 #include <vector>
 #include <list>
 #include <tuple>
+#include "Print_ip.h"
+#include <iostream>
 int main()
 {
     int8_t sig_char{-1};
@@ -15,5 +17,7 @@ int main()
     std::list<short> simple_list{400,300,200,100};
     std::tuple<int,int,int,int> simple_tuple=std::make_tuple(123,456,789,0);
 
+    std::cout<<std::endl;
+    Print_ip(std::cout,simple_string);
     return 0;
 }
