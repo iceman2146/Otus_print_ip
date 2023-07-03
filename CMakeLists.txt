@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.26)
+set(MAIN_APP_NAME "main")
+set(PROJECT_NAME "SFINAE")
+include_directories(include)
+add_executable(${MAIN_APP_NAME} src/main.cpp)
