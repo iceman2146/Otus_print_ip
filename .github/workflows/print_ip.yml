@@ -122,4 +122,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: uploads
-          path: ./build/print_ip-0.0.${{ github.run_number }}-win64.zip
+          path: ./build/Homework_5-0.0.${{ github.run_number }}-win64.zip
