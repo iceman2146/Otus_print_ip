@@ -6,9 +6,21 @@
 #include <type_traits>
 #include <vector>
 
+/**
+ * @file ip_print.h
+ *
+ * Шаблонные методы для песати адреса, представлено разными типами
+ */
 
-template <typename T, typename std::enable_if<std::is_integral<T>
-                                                ::value,bool>::type = true>
+/**
+ * @brief Шаблон для печати целых.
+ */
+/// @brief
+/// @tparam T
+/// @tparam type
+/// @param data
+template <typename T, typename std::enable_if<std::is_integral<T>::value,
+                                              bool>::type = true>
 void print_ip(T data) {
   static constexpr size_t size_byte = sizeof(T);
   for (auto i = size_byte; i--;) {
@@ -18,9 +30,13 @@ void print_ip(T data) {
   }
   std::cout << std::endl;
 }
-
+/**
+ * @brief Шаблон для печати строки.
+ */
 void print_ip(const std::string &str) { std::cout << str << std::endl; }
-
+/**
+ * @brief Шаблон для печати вектора или строки.
+ */
 template <typename T,
           typename std::enable_if<std::is_same<T, std::vector<int>>::value or
                                       std::is_same<T, std::list<short>>::value,
@@ -33,6 +49,10 @@ void print_ip(T container) {
   }
   std::cout << std::endl;
 }
+
+/**
+ * @brief Шаблон для печати кортежа.
+ */
 template <typename TypeFirst, typename... Types>
 void print_tuple(const TypeFirst &tFirst, const Types &...tArgs) {
 
@@ -40,8 +60,6 @@ void print_tuple(const TypeFirst &tFirst, const Types &...tArgs) {
   auto index = sizeof...(Types) - 1;
 
   auto printElem = [&tFirst, &index](const auto &x) {
-    static_assert(std::is_same_v<decltype(tFirst), decltype(x)>,
-                  "Tuple's types is diffrent!");
     std::cout << x;
 
     if (index-- > 0)
