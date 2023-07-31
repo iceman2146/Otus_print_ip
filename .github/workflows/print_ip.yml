@@ -28,40 +28,6 @@ jobs:
         force_orphan: true
         publish_branch: gh-pages
 
-  upload-release:
-    runs-on: ubuntu-latest
-    needs: [build_linux]
-    steps:
-    - uses: actions/checkout@v1
-    
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.run_number }}
-        release_name: Homework_5-0.0.${{ github.run_number }}
-        draft: false
-        prerelease: false
-        
-    - name: Download artifacts
-      uses: actions/download-artifact@v1
-      with:
-        name: uploads 
-        
-    - name: Upload Linux artifact
-      id: upload-linux
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./uploads/Homework_5-0.0.${{ github.run_number }}-Linux.deb
-        asset_name: Homework_5-0.0.${{ github.run_number }}-Linux.deb
-        asset_content_type: application/vnd.debian.binary-package   
-        
-
   build_linux:
     runs-on: ubuntu-latest
     steps:
