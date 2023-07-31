@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
-set(MAIN_APP_NAME "main")
+set(MAIN_APP_NAME "print_ip")
 set(PROJECT_NAME "SFINAE")
 include_directories(include)
 add_executable(${MAIN_APP_NAME} src/main.cpp)
+set_property(TARGET ${MAIN_APP_NAME} PROPERTY CXX_STANDARD 17)

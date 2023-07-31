@@ -1,23 +1,14 @@
 
-#include <stdint.h>
-#include <string>
-#include <vector>
-#include <list>
-#include <tuple>
-#include "Print_ip.h"
-#include <iostream>
+#include "ip_print.h"
 int main()
 {
-    int8_t sig_char{-1};
-    int16_t short_int{0};
-    int32_t simple_int{2130706433};
-    int64_t long_int{8875824491850138409};
-    std::string simple_string{"Hello, world!"};
-    std::vector<int> simple_vector{100,200,300,400};
-    std::list<short> simple_list{400,300,200,100};
-    std::tuple<int,int,int,int> simple_tuple=std::make_tuple(123,456,789,0);
-
-    std::cout<<std::endl;
-    Print_ip(std::cout,simple_string);
+    print_ip(int8_t{-1});
+    print_ip(int16_t{0});
+    print_ip( int32_t{2130706433} );
+    print_ip( int64_t{8875824491850138409} );
+    print_ip(std::string{"Hello, World!"});
+    print_ip( std::vector<int>{100, 200, 300, 400} ); 
+    print_ip( std::list<short>{400, 300, 200, 100} ); 
+    print_ip( std::make_tuple(123, 456, 789, 0) );
     return 0;
-}
+} 
