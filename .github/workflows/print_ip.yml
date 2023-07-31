@@ -8,6 +8,7 @@ on:
 jobs:
   build-documentation:
     runs-on: ubuntu-latest
+    permissions: write-all
     needs: [build_linux]
     steps:
     - uses: actions/checkout@v1 
