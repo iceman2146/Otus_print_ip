@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.26)
 
-set(MAIN_APP_NAME "print_ip")
-set(PROJECT_NAME "SFINAE")
-
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(PROJECT_NAME VERSION ${PROJECT_VESRION})
+project(Homework_2 VERSION ${PROJECT_VESRION})
+
+
+configure_file(version.h.in version.h)
 
 include_directories(include)
-add_executable(${MAIN_APP_NAME} src/main.cpp)
-set_property(TARGET ${MAIN_APP_NAME} PROPERTY CXX_STANDARD 17)
-
+add_executable(print_ip src/main.cpp)
+set_property(TARGET print_ip PROPERTY CXX_STANDARD 17)
+install(TARGETS print_ip RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
